@@ -1,4 +1,4 @@
-class AddNameToProjectsTable < ActiveRecord::Migration
+class AddPairToProjectsTable < ActiveRecord::Migration
   def change
     add_column :projects, :pair, :string
   end
