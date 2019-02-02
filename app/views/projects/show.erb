@@ -1,0 +1,23 @@
+<h2>Knit fast, die warm...</h2>
+<div class='project_card'>
+<h3 class='project_name'><%=@project.name%></h3>
+<br>
+<img class='project_img'src='<%=@project.image_url%>' height="125" width="125">
+<br>
+<br>
+<div class='project_info'>
+<p>Materials: <%=@project.materials%></p>
+<p>Instructions: <%=@project.instructions%></p>
+</div>
+<small>Created by: <%=@project.user.username%></small>
+ <%if current_user.projects.include?(@project)%>
+         <form method="post" action="/projects/<%=@project.id%>/delete">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete Project">
+        </form>
+
+        <form method="get" action="/projects/<%=@project.id%>/edit">
+            <input type="submit" value="Edit Project">
+        </form>
+<%end%>
+</div>

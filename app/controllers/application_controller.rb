@@ -1,34 +1,27 @@
 require './config/environment'
-
+require 'sinatra/flash'
 class ApplicationController < Sinatra::Base
 
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-    enable :sessions
-    set :session_secret, "nick12345"
-  end
+    configure do
+      set :public_folder, 'public'
+      set :views, 'app/views'
+      register Sinatra::Flash
+      enable :sessions
+      set :session_secret, "trading101"
+    end
 
+    get '/' do
+      erb :index
+    end
 
-  get '/' do
-    erb :index
-  end
+    helpers do
+      def logged_in?
+        !!session[:user_id]
+      end
 
-  helpers do
-    def redirect_if_not_logged_in
-      if !logged_in?
-        redirect "/login?error=You have to be logged in to do that"
+      def current_user
+        User.find(session[:user_id])
       end
     end
 
-    def logged_in?
-      !!session[:user_id]
-    end
-
-    def current_user
-      User.find(session[:user_id])
-    end
-
   end
-
-end

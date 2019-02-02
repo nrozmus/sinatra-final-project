@@ -1,0 +1,30 @@
+
+<h2>Knitsporation Station</h2>
+<br>
+
+
+<%@projects.each do |p|%>
+
+<div class='project_card'>
+    <h4><a class='project_name' href='/projects/<%=p.id%>'><%=p.name%></a></h4>
+    <br>
+    <img class='project_img' src='<%=p.image_url%>' alt='knitted <%=p.name%>' height="125" width="125">
+    <br>
+    <br>
+    <div class='project_info'>
+    <p>Materials: <%=p.materials%></p>
+    <p>Instructions: <%=p.instructions%></p>
+    </div>
+    <small>Created by: <%=p.user.username%></small>
+        <%if current_user.projects.include?(p)%>
+         <form method="post" action="/projects/<%=p.id%>/delete">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete Project">
+        </form>
+
+        <form method="get" action="/projects/<%=p.id%>/edit">
+            <input type="submit" value="Edit Project">
+        </form>
+        <%end%>
+    </div>
+<%end%>

@@ -3,30 +3,58 @@
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <title>Sinatra</title>
+  <title>KnitHappens</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
-  </head>
-  <body>
-    <div class="wrapper">
+  <link rel="stylesheet" href="/stylesheets/main.css" />
+</head>
 
-        <%= yield %>
+<body>
+  <div class="wrapper">
 
-      <footer class="branding">
-        <small>&copy; 2019 <strong>Sinatra</strong></small>
-      </footer>
+  <div class="container">
+  <div class ='header'>
+      <% if logged_in? %>
+      <h1> Knit Happens  ¯\_(ツ)_/¯</h1>
+      <ul>
+        <li><a href="/projects"> Home </a></li>
+        <li><a href="/users/<%=current_user.slug%>"> Your Projects </a></li>
+        <li><a href="/projects/new"> Create Project </a></li>
+        <li><a href="/logout"> Log Out </a></li>
+      </ul>
+      <% else %>
+      <h1> Knit Happens  ¯\_(ツ)_/¯</h1>
+      <ul>
+        <li><a href="/signup">Sign Up</a></li>
+        <li><a href="/login"> Log In </a></li>
+      </ul>
+      <%end %>
+  </div>
+  <br>
+
+    <%= yield %>
+
+     <div class='error_message'>
+      <% if !!flash[:error] %>
+        <%= flash[:error] %>
+      <% end %>
+
     </div>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!--[if lt IE 7]>
-      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-    <![endif]-->
-  </body>
-</html>
+    <footer class="branding">
+      <small>Crocheting is for hookers.  </small>
+      <small>&copy; 2018 <strong>KnitHappens</strong></small>
+    </footer>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <!--[if lt IE 7]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+  <![endif]-->
+</body>
