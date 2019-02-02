@@ -1,5 +1,5 @@
 
-<h2>Knitsporation Station</h2>
+<h2>Trade Analysis Console</h2>
 <br>
 
 
@@ -8,12 +8,11 @@
 <div class='project_card'>
     <h4><a class='project_name' href='/projects/<%=p.id%>'><%=p.name%></a></h4>
     <br>
-    <img class='project_img' src='<%=p.image_url%>' alt='knitted <%=p.name%>' height="125" width="125">
+    <img class='project_img' src='<%=p.image_url%>' alt='technical <%=p.name%>' height="125" width="125">
     <br>
     <br>
     <div class='project_info'>
-    <p>Materials: <%=p.materials%></p>
-    <p>Instructions: <%=p.instructions%></p>
+    <p>Technical Analysis: <%=p.technical_analysis%></p>
     </div>
     <small>Created by: <%=p.user.username%></small>
         <%if current_user.projects.include?(p)%>

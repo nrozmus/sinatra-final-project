@@ -1,13 +1,12 @@
-<h2>Knit fast, die warm...</h2>
+<h2>Let's trade some ideas...</h2>
 <div class='project_card'>
-<h3 class='project_name'><%=@project.name%></h3>
+<h3 class='project_name'><%=@project.pair%></h3>
 <br>
 <img class='project_img'src='<%=@project.image_url%>' height="125" width="125">
 <br>
 <br>
 <div class='project_info'>
-<p>Materials: <%=@project.materials%></p>
-<p>Instructions: <%=@project.instructions%></p>
+<p>Technical Analysis: <%=@project.technical_analysis%></p>
 </div>
 <small>Created by: <%=@project.user.username%></small>
  <%if current_user.projects.include?(@project)%>

@@ -22,7 +22,7 @@ class ProjectController < ApplicationController
             flash[:error] = "All fields must be filled in"
             redirect '/projects/new'
         elsif logged_in? && !params.empty?
-            @project = current_user.projects.create(name: params[:name], materials: params[:materials], image_url: params[:image_url], instructions: params[:instructions])
+            @project = current_user.projects.create(pair: params[:pair], image_url: params[:image_url], technical_analysis: params[:technical_analysis])
             if @project.save
                 redirect "/projects/#{@project.id}"
             else
@@ -62,7 +62,7 @@ class ProjectController < ApplicationController
             flash[:error] = "All fields must be filled in"
             redirect "/projects/#{@project.id}/edit"
         elsif logged_in? && !params.empty? && current_user.projects.include?(@project)
-            @project.update(name: params[:name], materials: params[:materials], image_url: params[:image_url], instructions: params[:instructions])
+            @project.update(pair: params[:pair], image_url: params[:image_url], technical_analysis: params[:technical_analysis])
             redirect "/projects/#{@project.id}"
         else
             flash[:error] = "You must be logged in."
