@@ -6,7 +6,7 @@
 <%@projects.each do |p|%>
 
 <div class='project_card'>
-    <h4><a class='project_name' href='/projects/<%=p.id%>'><%=p.technical_analysis%></a></h4>
+    <h4><a class='project_name' href='/projects/<%=p.id%>'><%=p.pair%></a></h4>
     <br>
     <img class='project_img' src='<%=p.image_url%>' alt='technical <%=p.pair%>' height="125" width="125">
     <br>
