@@ -3,18 +3,25 @@
 <br>
 
 
+
+<form action="/search" method="post">
+     <p>
+       <label for="/search">Search Pairs Here: </label>
+       <input type="text" name="name"></input>
+       <input type="submit" value="Submit"></input>
+ </form>
+
 <%@projects.each do |p|%>
 
 <div class='project_card'>
-    <h4><a class='project_name' href='/projects/<%=p.id%>'><%=p.pair%></a></h4>
+    <h4><a class='project_name' href='/projects/<%=p.id%>'><%=p.name%></a></h4>
     <br>
-    <img class='project_img' src='<%=p.image_url%>' alt='technical <%=p.pair%>' height="125" width="125">
+    <img class='project_img' src='<%=p.image_url%>' alt='technical <%=p.name%>' height="125" width="125">
     <br>
     <br>
     <div class='project_info'>
     <p>Technical Analysis: <%=p.technical_analysis%></p>
     </div>
-    <small>Created by: <%=p.user.username%></small>
         <%if current_user.projects.include?(p)%>
          <form method="post" action="/projects/<%=p.id%>/delete">
             <input id="hidden" type="hidden" name="_method" value="DELETE">

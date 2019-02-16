@@ -2,7 +2,11 @@ class Project < ActiveRecord::Base
     extend Slugify::ClassMethods
     include Slugify::InstanceMethods
 
-    validates_presence_of :pair, :image_url, :technical_analysis
+    validates_presence_of :name, :image_url, :technical_analysis
 
     belongs_to :user
-end
+
+    def self.search(search)
+     where("name like ?", "%#{search}%")
+    end
+  end

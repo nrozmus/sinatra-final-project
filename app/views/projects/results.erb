@@ -1,0 +1,12 @@
+<ul>
+  <% @projects.each do |project| %>
+    <br>
+    <li>PAIR: <%= project.name %></li>
+    <br>
+    <li>Image Link: <%= project.image_url %></li>
+    <br>
+    <li>Analysis: <%= project.technical_analysis %></li>
+    <br>
+    <img src='/images/forex.jpg' alt='Forex Trading' height:'50'>
+  <% end %>
+</ul>

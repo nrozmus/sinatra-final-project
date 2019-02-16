@@ -1,3 +1,4 @@
+#require 'pry'
 class ProjectController < ApplicationController
 
     get '/projects' do
@@ -22,8 +23,9 @@ class ProjectController < ApplicationController
             flash[:error] = "All fields must be filled in"
             redirect '/projects/new'
         elsif logged_in? && !params.empty?
-            @project = current_user.projects.create(pair: params[:pair], image_url: params[:image_url], technical_analysis: params[:technical_analysis])
+            @project = current_user.projects.create(name: params[:name], image_url: params[:image_url], technical_analysis: params[:technical_analysis])
             if @project.save
+          #    binding.pry
                 redirect "/projects/#{@project.id}"
             else
                 flash[:error] = "Your project could not be saved. Try again!"
@@ -62,7 +64,7 @@ class ProjectController < ApplicationController
             flash[:error] = "All fields must be filled in"
             redirect "/projects/#{@project.id}/edit"
         elsif logged_in? && !params.empty? && current_user.projects.include?(@project)
-            @project.update(pair: params[:pair], image_url: params[:image_url], technical_analysis: params[:technical_analysis])
+            @project.update(name: params[:name], image_url: params[:image_url], technical_analysis: params[:technical_analysis])
             redirect "/projects/#{@project.id}"
         else
             flash[:error] = "You must be logged in."

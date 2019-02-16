@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20190202031216) do
 
   create_table "projects", force: :cascade do |t|
-    t.string  "pair"
+    t.string  "name"
     t.text    "technical_analysis"
     t.integer "user_id"
     t.string  "image_url"

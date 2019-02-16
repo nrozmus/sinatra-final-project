@@ -21,7 +21,16 @@ class ApplicationController < Sinatra::Base
 
       def current_user
         User.find(session[:user_id])
+end
+        post '/search' do
+        @projects = Project.all
+        if params[:name]
+          @projects = Project.search(params[:name])
+
+          erb :'/projects/results'
+
+        end
+
       end
     end
-
-  end
+end

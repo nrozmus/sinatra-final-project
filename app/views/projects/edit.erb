@@ -4,7 +4,7 @@
 <p>Edit your Project Analysis Below:</p>
 <form action="/projects/<%=@project.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <p>Pair: <input type="text" name="name" placeholder='<%=@project.pair%>'></p>
+    <p>Name: <input type="text" name="name" placeholder='<%=@project.name%>'></p>
     <p>Image URL: <input type="text" name="image_url" placeholder='<%=@project.image_url%>'></p>
     <p>Technical Analysis: </p>
     <textarea name="technical_analysis" value='technical_analysis'rows="10" cols="30" placeholder='<%=@project.technical_analysis%>'></textarea>
